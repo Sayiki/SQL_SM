@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\CalendarController;
+use App\Http\Controllers\loginController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,6 +18,11 @@ use App\Http\Controllers\CalendarController;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/sesi', [loginController::class, 'login']);
+Route::post('/sesi/logins', [loginController::class, 'logins']);
+Route::get('/sesi/logout', [loginController::class, 'logout']);
+
 Route::get('/AddSchedule', [TaskController::class, 'create']);
 Route::resource('tasks', 'App\Http\Controllers\TaskController');
 Route::get('/dashboard', [TaskController::class, 'index']);

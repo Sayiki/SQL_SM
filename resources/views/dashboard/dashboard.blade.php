@@ -75,7 +75,7 @@
                             <div class="dropdown-menu dropdown-menu-end">
                                 <a href="#" class="dropdown-item">Profile</a>
                                 <a href="#" class="dropdown-item">Settings</a>
-                                <a href="#" class="dropdown-item">Log Out</a>
+                                <a href="/sesi/logout" class="dropdown-item">Log Out</a>
                             </div>
                         </li>
                     </ul>
