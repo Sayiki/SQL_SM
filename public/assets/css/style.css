@@ -193,6 +193,72 @@ a.sidebar-link{
 #calendar {
     width: 65%;
     margin: 0 auto; 
+    padding: 10px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Style for the calendar header */
+.fc .fc-toolbar-title {
+    color: #333;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+/* Style for the calendar days */
+.fc .fc-daygrid-day {
+    border: 1px solid #e3e3e3;
+    transition: background-color 0.3s;
+}
+
+/* Style for the day numbers */
+.fc .fc-daygrid-day-number {
+    font-size: 16px;
+    color: #333;
+}
+
+/* Hover effect for days */
+.fc .fc-daygrid-day:hover {
+    background-color: #f0f0f0;
+}
+
+/* Style for today */
+.fc .fc-day-today {
+    background-color: #eaf6ff;
+    border-color: #8ed1fc;
+}
+
+/* Style for the events */
+.fc .fc-event {
+    background-color: #ff9f89;
+    border-color: #ff7866;
+    color: white;
+    border-radius: 4px;
+    padding: 4px 8px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+/* Style for the event titles */
+.fc .fc-event-title {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/* Style for weekend days */
+.fc .fc-day-sat,
+.fc .fc-day-sun {
+    background-color: #f8f8f8;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    #calendar {
+        width: 100%;
+        margin: 20px 0;
+    }
 }
 
 @media (max-width: 768px) {
