@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
+    <title>Feedback</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
     <script src="https://kit.fontawesome.com/83e3234794.js" crossorigin="anonymous"></script>
@@ -75,49 +75,14 @@
                 </div>
             </nav>
             <main class="content px-3 py-2">
-                <div class="container-fluid">
-                    <div class="mb-3">
-                        <h4>Welcome, Arsaq</h4>
-                    </div>
-                    <div class="row">
-                        <div class="col-12 col-md-6 d-flex">
-                            <div class="card flex-fill border-0 illustration">
-                                <div class="card-body p-0 d-flex flex-fill">
-                                    <div class="row g-0 w-100">
-                                        <div class="col-6">
-                                            <div class="p-3 m-1">
-                                                <h4 class="text-danger">WebPROOOOOOOOOOOOOOOOOoooooooo</h4>
-                                                <p class="mb-0">13:15 - 15:38</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 col-md-6 d-flex">
-                            <div class="card flex-fill border-0">
-                                <div class="card-body p-0 d-flex flex-fill">
-                                    <div class="row g-0 w-100">
-                                        <div class="col-6">
-                                            <div class="p-3 m-1">
-                                                <h4>AI</h4>
-                                                <p class="mb-0">18:44 - 19:44</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        </div>
-                    </div>
                     <!-- Table -->
                     <div class="card border-0">
                         <div class="card-header">
                             <h5 class="card-title">
-                                Today Schedule
+                                Add Feedback
                             </h5>
                             <h6 class="card-subtitle text-mute">
-                                December, 10
+                                <!-- December, 10 -->
                             </h6>
                         </div>
                         <div class="card-body">
@@ -128,35 +93,24 @@
                                             <div class="table-responsive">
                                                 <table class="table">
                                                     <thead>
-                                                        <tr>    
-                                                            <th>Name</th>
-                                                            <th>Start Time</th>
-                                                            <th>End Time</th>
-                                                            <th colspan="2" text-align="center">Action</th>
-                                                        </tr>
+                                                        <div class="form-group">
+                                                            <div contenteditable="true" id="textarea" oninput="updateCursorPosition()" style="border: 1px solid #ced4da; padding: 8px; min-height: 100px;"></div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <br>
+                                                            <div id="formatting-options">
+                                                                <button type="button" class="btn btn-secondary" onclick="applyFormatting('bold')">Bold</button>
+                                                                <button type="button" class="btn btn-secondary" onclick="applyFormatting('italic')">Italic</button>
+                                                                <button type="button" class="btn btn-secondary" onclick="applyFormatting('underline')">Underline</button>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <br>
+                                                            <input type="file" class="form-control" id="file-upload">
+                                                        </div>
+                                                        <br>
+                                                        <a href="/submit" class="btn btn-primary">Submit</a>
                                                     </thead>
-                                                    <tbody>   
-                                                    @foreach($tasks as $t)
-                                                        <tr>
-                                                            <td>{{ $t->name }}</td>
-                                                            <td>{{ $t->start_time }}</td>
-                                                            <td>{{ $t->end_time }}</td>
-                                                            <td><a href="/edit-{{$t->id}}" class="btn btn-primary">edit</a></td>
-                                                            <td>
-                                                            <form action="/dashboard/{{$t->id}}" method="POST">
-                                                                    @csrf
-                                                                    @method('delete')
-                                                                    <input type="submit" class="btn btn-danger" value="delete" id="delete">
-                                                                </form>
-                                                            </td>
-                                                        </tr>
-                                                    @endforeach
-                                                        <tr>
-                                                            <a href="/AddSchedule">
-                                                                <i class="fa fa-plus" aria-hidden="true"></i> Add New Task
-                                                            </a> 
-                                                        </tr>
-                                                    </tbody>
                                                 </table>
                                             </div>
                                         </div>
@@ -167,6 +121,16 @@
                     </div>
                 </div>
             </main>
+            <script>
+                function updateCursorPosition() {
+                    var textarea = document.getElementById('textarea');
+                    window.currentCursorPosition = window.getSelection().getRangeAt(0);
+                }
+
+                function applyFormatting(format) {
+                    document.execCommand(format, false, null);
+                }
+            </script>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>

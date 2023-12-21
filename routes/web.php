@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FeedbackController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\CalendarController;
@@ -34,4 +35,5 @@ Route::get('/dashboard/{id}', [TaskController::class, 'show']);
 Route::get('/calendar', [CalendarController::class, 'index']);
 Route::get('/events', [CalendarController::class, 'events']);
 
-
+Route::get('/feedback', [FeedbackController::class, 'index']);
+Route::get('/submit', [FeedbackController::class, 'submit']);
