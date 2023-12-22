@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\CalendarController;
 use App\Http\Controllers\loginController;
+use App\Http\Controllers\RegisterController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,6 +19,8 @@ use App\Http\Controllers\loginController;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/register/register', [RegisterController::class, 'register']);
+Route::post('/register/create', [RegisterController::class, 'create']);
 
 Route::get('/sesi', [loginController::class, 'login']);
 Route::post('/sesi/logins', [loginController::class, 'logins']);
