@@ -10,11 +10,11 @@ class FeedbackMail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    // public $feedback;
+    public $feedback;
 
-    public function __construct()
+    public function __construct($feedback)
     {
-        // $this->feedback = $feedback;
+        $this->feedback = $feedback;
     }
 
     public function build()
