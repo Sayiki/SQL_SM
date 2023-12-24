@@ -3,7 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\RegisterController;
+use App\Models\register;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\Users;
 
@@ -24,12 +28,11 @@ class RegisterController extends Controller
                 'lname' => 'required',
                 'username' => 'required',
                 'email' => 'required',
-                'password' => 'required|min:6'
+                'password' => 'required'
             
        ], [
             'email.required'=>'Email wajib diisi',
-            'password.required'=>'Password wajib diisi',
-            'password.min'=>'Minimun password yang di inputkan adalah 6'
+            'password.required'=>'Password wajib diisi'
        ]);
 
        $data = [
@@ -39,11 +42,12 @@ class RegisterController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password)
        ];
-       User::create($data);
-
-       return redirect('/sesi')->with('success', 'Registration success. Please login!');
+       users::create($data);
+       
+        return redirect('sesi')->with('Succes');
+    }
     }
 
-    }
+    
 
 

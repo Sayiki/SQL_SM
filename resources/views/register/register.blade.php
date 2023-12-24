@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <title>Sahabat Mahasiswa-Sign Up</title>
     <style>
@@ -21,7 +21,7 @@
 
 <body>
     <div class="navbar">
-        <img src="assets/image/Logo Panjang.png" class="img-fluid mt-" width="15%">
+        <img src="{{url('assets/image/Logo_Panjang.png')}}" class="img-fluid mt-" width="15%">
         <ul>
             <li><a href="/Login Page/Index.html">Log In</a></li>
         </ul>
@@ -42,21 +42,22 @@
                 </div>
                 <div class="col-md-4">
                     <label for="username" style="color: white;">Username</label>
-                    <input type="Username" value="{{ Session::get('username') }}"class="form-control" id="username" name="username" placeholder="username"  required>
+                    <input type="Username" value="{{ Session::get('username') }}"class="form-control" id="username" name="username" placeholder="Username"  required>
                 </div>
                 <div class="col-md-8">
                     <label for="email" style="color: white;">Email</label>
-                    <input type="email" value="{{ Session::get('email') }}"class="form-control" id="email" name="email" 
-                        placeholder="Username@student.telkomuniversity.ac.id" required>
+                    <input type="text" value="{{ Session::get('email') }}"class="form-control" id="email" name="email" 
+                        placeholder="Email@student.telkomuniversity.ac.id" required>
                 </div>
             </div>
             <div class="form-group">
                 <label for="password" style="color: white;">Password</label>
-                <input type="text" value="{{ Session::get('password') }}"class="form-control" id="password" name="password"  placeholder="Password"required>
+                <input type="password" value="{{ Session::get('password') }}"class="form-control" id="password" name="password"  placeholder="Password"required>
                 <div class=" mx-auto">
                     <p id="capitalLetter" class="requirement">&#9679; at least use one capital letters </p>
                     <p id="symbol" class="requirement">&#9679; Using Symbol</p>
                     <p id="number" class="requirement">&#9679; At least use one Numbers</p>
+                    <p id="minLength" class="requirement">&#9679; Using Minimum 8 Character</p>
                 </div>
                 <div class="form-group">
                     <label for="confirmPassword" style="color: white;">Confirm Password</label>
@@ -69,7 +70,7 @@
     </div>
     </form>
     <br>
-    <p>Already have an account? <a href="/Login Page/Index.html">Log In</a></p>
+    <p>Already have an account? <a href="/sesi/Index.blade.php">Log In</a></p>
     </br>
     <script>
         function validate() {
@@ -104,7 +105,7 @@
                 return false;
             }
 
-            if (email != username + "@student.telkomuniversity.ac.id") {
+            if (email !=  + "@student.telkomuniversity.ac.id") {
                 alert("Email does not match with Username or invalid email address ");
                 return false;
             }
@@ -121,10 +122,13 @@
                 capitalLetter = /[A-Z]/.test(value);
                 symbol = /[!@#$%^&*(),.?":{}|<>]/.test(value);
                 number = /[0-9]/.test(value);
+                minLength = /.{8,}$/.test(value);
+                minLengthRegex = minLength;
 
                 $('#capitalLetter').css('color', capitalLetter ? 'green' : 'rgb(237, 106, 106)');
                 $('#symbol').css('color', symbol ? 'green' : 'rgb(237, 106, 106)');
                 $('#number').css('color', number ? 'green' : 'rgb(237, 106, 106)');
+                $('#minLength').css('color', minLengthRegex ? 'green' : 'rgb(237, 106, 106)');
             });
         });
     </script>

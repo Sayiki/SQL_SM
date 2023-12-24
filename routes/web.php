@@ -20,7 +20,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/register/register', [RegisterController::class, 'register']);
-Route::post('/register/create', [RegisterController::class, 'create']);
+Route::post('/register/register/register', [RegisterController::class, 'create']);
 
 Route::get('/sesi', [loginController::class, 'login']);
 Route::post('/sesi/logins', [loginController::class, 'logins']);
