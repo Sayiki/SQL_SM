@@ -36,5 +36,7 @@ Route::delete('/dashboard/{id}', [TaskController::class, 'delete']);
 Route::get('/dashboard/{id}', [TaskController::class, 'show']);
 Route::get('/calendar', [CalendarController::class, 'index']);
 Route::get('/events', [CalendarController::class, 'events']);
+Route::get('/tasks-json', [TaskController::class, 'getDataForDatatables']);
+
 
 

@@ -211,5 +211,24 @@
             });
         });
     </script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#tasksTable').DataTable({
+            "processing": true,
+            "serverSide": true,
+            "ajax": {
+                "url": "/tasks-json",
+                "dataSrc": "data"
+            },
+            "columns": [
+                { "data": "name" },
+                { "data": "start_time" },
+                { "data": "end_time" }
+            ]
+        });
+    });
+</script>
 </body>
 </html>

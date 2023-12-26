@@ -62,4 +62,8 @@ class TaskController extends Controller
 
         return view('dashboard.dashboard', ['showdashboard' => $show]);
     }
+    public function getDataForDatatables(){
+        $tasks = Tasks::all();
+        return response()->json(['data' => $tasks]);
+    }
 }
