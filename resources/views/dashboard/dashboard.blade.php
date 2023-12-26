@@ -75,7 +75,7 @@
                             <div class="dropdown-menu dropdown-menu-end">
                                 <a href="#" class="dropdown-item">Profile</a>
                                 <a href="#" class="dropdown-item">Settings</a>
-                                <a href="/sesi/logout" class="dropdown-item">Log Out</a>
+                                <a href="#" class="dropdown-item">Log Out</a>
                             </div>
                         </li>
                     </ul>
@@ -151,14 +151,17 @@
                                                             <td><a href="/edit-{{$t->id}}" class="btn btn-primary">edit</a></td>
                                                             <td>
                                                             <form action="/dashboard/{{$t->id}}" method="POST">
-                                                                    @csrf
-                                                                    @method('delete')
-                                                                    <input type="submit" class="btn btn-danger" value="delete" id="delete">
-                                                                </form>
+                                                                @csrf
+                                                                @method('delete')
+                                                                <input type="submit" class="btn btn-danger delete-btn" value="delete" id="delete{{$t->id}}">
+                                                            </form>
                                                             </td>
                                                         </tr>
                                                     @endforeach
                                                         <tr>
+                                                            @if(session('success'))
+                                                                <div class="alert alert-success">{{session('success')}}</div>
+                                                            @endif
                                                             <a href="/AddSchedule">
                                                                 <i class="fa fa-plus" aria-hidden="true"></i> Add New Task
                                                             </a> 
@@ -180,7 +183,33 @@
     <script src="assets/js/script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
-        
+        document.querySelectorAll('.delete-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                const taskId = e.target.id.replace('delete', '');
+
+                Swal.fire({
+                    title: 'Yakin?',
+                    text: 'Task yang terhapus tidak dapat dikembalikan!',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#d33',
+                    cancelButtonColor: '#3085d6',
+                    confirmButtonText: 'Iye',
+                    cancelButtonText: 'gjadi'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        // Jika pengguna konfirmasi untuk menghapus
+                        document.getElementById('delete' + taskId).closest('form').submit();
+                        Swal.fire(
+                            'Dihapus!',
+                            'Task berhasil dihapus.',
+                            'success'
+                        )
+                    }
+                });
+            });
+        });
     </script>
 </body>
 </html>
