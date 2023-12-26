@@ -12,7 +12,7 @@
     <div class="navbar">
         <img src="assets/image/Logo Panjang.png" class="img-fluid mt-" width="15%">
         <ul>
-            <li><a href="/SignUp Page/SignUp.html">Sign Up</a></li>
+            <li><a href="/register/register">Sign Up</a></li>
         </ul>
       </div>
         

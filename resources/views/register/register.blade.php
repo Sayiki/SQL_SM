@@ -23,7 +23,7 @@
     <div class="navbar">
         <img src="{{url('assets/image/Logo_Panjang.png')}}" class="img-fluid mt-" width="15%">
         <ul>
-            <li><a href="/Login Page/Index.html">Log In</a></li>
+            <li><a href="/sesi">Log In</a></li>
         </ul>
     </div>
 
@@ -70,7 +70,7 @@
     </div>
     </form>
     <br>
-    <p>Already have an account? <a href="/sesi/Index.blade.php">Log In</a></p>
+    <p>Already have an account? <a href="/sesi">Log In</a></p>
     </br>
     <script>
         function validate() {
