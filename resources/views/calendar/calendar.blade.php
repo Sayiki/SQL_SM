@@ -44,7 +44,7 @@
                                 <a href="#" class="sidebar-link">Calender</a>
                             </li>
                             <li class="sidebar-item">
-                                <a href="/dashboard/AddSchedule" class="sidebar-link">Add Schedule</a>
+                                <a href="/AddSchedule" class="sidebar-link">Add Schedule</a>
                             </li>
                         </ul>
                     </li>
