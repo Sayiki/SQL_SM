@@ -19,6 +19,7 @@ use App\Http\Controllers\RegisterController;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/landing', [TaskController::class, 'landing']);
 Route::get('/register/register', [RegisterController::class, 'register']);
 Route::post('/register/register/register', [RegisterController::class, 'create']);
 

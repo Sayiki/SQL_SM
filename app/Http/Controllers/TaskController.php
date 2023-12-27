@@ -8,6 +8,12 @@ use Illuminate\Http\Request;
 
 class TaskController extends Controller
 {
+
+    public function landing()
+    {
+        return view('landing.landing');
+    }
+    
     public function index(){
         $tasks = Tasks::all();
         return view('dashboard.dashboard', compact(['tasks']));
