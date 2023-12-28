@@ -36,4 +36,4 @@ Route::get('/calendar', [CalendarController::class, 'index']);
 Route::get('/events', [CalendarController::class, 'events']);
 
 Route::get('/feedback', [FeedbackController::class, 'index']);
-Route::get('/submit', [FeedbackController::class, 'submit']);
+Route::post('/submitFeedback', [FeedbackController::class, 'submit']);

@@ -2,27 +2,41 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
+use App\Models\Feedback;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Mail;
-use App\Mail\FeedbackMail;
 
 class FeedbackController extends Controller
 {
     public function index()
     {
-        return view('dashboard.feedback');
+        $feedbacks = Feedback::latest()->get();
+        return view('dashboard.feedback', compact('feedbacks'));
     }
+
     public function submit(Request $request)
     {
-        $feedback = $request->input('feedback');
+        // Validate the request
+        $request->validate([
+            'content' => 'required|string',
+            'feedbackFile' => 'nullable|file|mimes:jpeg,png,pdf|max:2048', // Adjust file types and size as needed
+        ]);
 
-        // Kirim email
-        Mail::to('sahabatmahasiswa@sahabat.com')->send(new FeedbackMail($feedback));
-        
+        $fileName = null;
 
-        // Logika lain, jika diperlukan
+        // Handle file upload if a file is provided
+        if ($request->hasFile('feedbackFile')) {
+            $file = $request->file('feedbackFile');
+            $fileName = time() . '_' . $file->getClientOriginalName();
+            $file->storeAs('feedback_files', $fileName, 'public'); // Adjust the storage path as needed
+        }
 
-        return redirect('/dashboard/feedback')->with('success', 'Feedback berhasil dikirim');
+        // Save feedback to the database or perform any other necessary actions
+        $feedback = new Feedback();
+        $feedback->content = $request->input('content');
+        $feedback->file_path = $fileName; // Save the file path if a file is uploaded
+        $feedback->save();
+
+        return response()->json($feedback);
     }
+
 }
