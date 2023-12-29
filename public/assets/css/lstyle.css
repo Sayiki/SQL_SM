@@ -89,4 +89,8 @@ body {
     height: 40px;
     width: 100%;
   }
+
+  form .alert .alert-danger ul li {
+    color: black;
+}
   
