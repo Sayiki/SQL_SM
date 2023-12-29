@@ -20,7 +20,7 @@ class loginController extends Controller
             'email'=>'required',
             'password'=>'required'
        ],[
-            'emai.required'=>'Email wajib diisi',
+            'email.required'=>'Email wajib diisi',
             'password.required'=>'Password wajib diisi'
        ]);
 
@@ -33,7 +33,7 @@ class loginController extends Controller
             return redirect('dashboard')->with('success','Berhasil Login');
        }else{
             // return 'gagal';
-            return redirect('sesi')->withErrors('emial dan password yang dimasukkan tidak valid');
+            return redirect('sesi')->withErrors('email dan password yang dimasukkan tidak valid');
        }
     }
 

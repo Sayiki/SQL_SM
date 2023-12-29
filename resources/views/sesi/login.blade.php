@@ -29,6 +29,15 @@
         <div class="col-md-6">
             <div class="row d-flex justify-content-center align-item-center">
                 <form class="mx-auto my-auto shadow d-flex flex-column" action="/sesi/logins" method="POST">
+                    @if ($errors->any())
+                        <div class="alert alert-danger" style="color:black">
+                            <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                            </ul>
+                        </div>
+                    @endif
                     @csrf
                     <h3 class="mb-3 text-center">Welcome back </h3>
                     <h4 class="text-center">Login</h4>
