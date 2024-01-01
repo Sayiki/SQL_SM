@@ -18,7 +18,7 @@
         <aside id="sidebar">
             <div class="h-100">
                 <div class="sidebar-logo">
-                    <a href="#">
+                    <a href="/dashboard">
                         <img src="assets/image/Logo_Panjang.png" alt="logo" style="width: 10vw;">
                     </a>
                 </div>
@@ -54,7 +54,7 @@
                         </a>
                         <ul id="pages" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                             <li class="sidebar-item">
-                                <a href="/feeback" class="sidebar-link">Feedback</a>
+                                <a href="/feedback" class="sidebar-link">Feedback</a>
                             </li>
                             <li class="sidebar-item">
                                 <a href="#" class="sidebar-link">Change Language</a>
