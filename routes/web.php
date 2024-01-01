@@ -5,6 +5,7 @@ use App\Http\Controllers\TaskController;
 use App\Http\Controllers\CalendarController;
 use App\Http\Controllers\loginController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\FeedbackController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -39,5 +40,6 @@ Route::get('/calendar', [CalendarController::class, 'index']);
 Route::get('/events', [CalendarController::class, 'events']);
 Route::get('/tasks-json', [TaskController::class, 'getDataForDatatables']);
 
-
+Route::get('/feedback', [FeedbackController::class, 'index']);
+Route::post('/submitFeedback', [FeedbackController::class, 'submit']);
 

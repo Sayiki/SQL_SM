@@ -13,8 +13,6 @@ return new class extends Migration
     {
         Schema::create('tasks', function (Blueprint $table) {
             $table->id();
-            $table->string('user_id');
-            $table->foreign('user_id')->references('id')->on('users');
             $table->string('name');
             $table->datetime('start_time');
             $table->datetime('end_time');
