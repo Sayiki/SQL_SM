@@ -117,7 +117,6 @@
                             <div class="card flex-fill border-0">
                                 @if($tasks->count() > 1)
                                     <?php
-                                        $earliestTask = $tasks->sortBy('start_time')->first();
                                         $secondEarliestTask = $tasks->sortBy('start_time')->skip(1)->first();
                                     ?>
                                     <div class="card-body p-0 d-flex flex-fill">
