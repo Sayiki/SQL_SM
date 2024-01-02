@@ -121,26 +121,50 @@
         <h2 style="font-size:large;" class="text-center">Jadi, siap untuk membuat jadwal kuliah Anda lebih ringan dan menyenangkan? 
           <br>Ayo bergabung dengan Sahabat Mahasiswa sekarang!
 
-          <br><button type="button" class="btn btn-primary">SIGN UP</button>
+          <br>
+          <a href="/register/register"><button type="button" class="btn btn-primary">SIGN UP</button></a>
         </h2>
 
       </div>
     </div>
 
     <div class="container-fluid">
-      <div class="content2-container">
+    <div class="content2-container">
         <div class="content2">
-          <div>
             <h3>Feedback from Users</h3>
-              <ul>
-              @foreach($feedbacks as $feedback)
-              <li>{{ $feedback->content }}</li>
-              @endforeach
-              </ul>
-          </div>
+
+            <div class="row justify-content-start">
+                @foreach($feedbacks as $key => $feedback)
+                    @if($key < 3)
+                        <div class="col-md-4 mb-4 @if($feedbacks->currentPage() > 1 && $key == 0) offset-md-0 @endif">
+                            <div class="card bg-dark text-white">
+                                <div class="card-body">
+                                    <p class="card-text">{{ $feedback->content }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    @endif
+                @endforeach
+            </div>
+
+            <div class="d-flex justify-content-between">
+                @if($feedbacks->currentPage() > 1)
+                    <a href="{{ $feedbacks->previousPageUrl() }}" class="btn btn-primary">Previous</a>
+                @endif
+
+                @if($feedbacks->hasMorePages())
+                    <a href="{{ $feedbacks->nextPageUrl() }}" class="btn btn-primary">Next</a>
+                @endif
+            </div>
         </div>
-      </div>
     </div>
+</div>
+
+
+
+
+
+
     
 
 

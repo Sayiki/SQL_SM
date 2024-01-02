@@ -11,7 +11,7 @@ class TaskController extends Controller
 {
     public function landing()
     {
-        $feedbacks = Feedback::all();
+        $feedbacks = Feedback::paginate(3);
         return view('landing.landing', compact('feedbacks'));
     }
     

@@ -95,6 +95,18 @@
     margin-right: -30px;
   }
   
+  .content2_feedback {
+    background-color: #1C1D22;
+    padding: 5%;
+    text-align: center;
+  }
+  
+  .content2-container-feedback {
+    padding-bottom: 10%;
+    margin-left: -30px;
+    margin-right: -30px;
+  }
+
   .content2 p {
     padding-top: 2%;
     ;
