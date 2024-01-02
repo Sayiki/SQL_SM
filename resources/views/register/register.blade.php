@@ -23,7 +23,7 @@
     <div class="navbar">
         <img src="{{url('assets/image/Logo_Panjang.png')}}" class="img-fluid mt-" width="15%">
         <ul>
-            <li><a href="/Login Page/Index.html">Log In</a></li>
+            <li><a href="/sesi">Log In</a></li>
         </ul>
     </div>
 
@@ -46,7 +46,7 @@
                 </div>
                 <div class="col-md-8">
                     <label for="email" style="color: white;">Email</label>
-                    <input type="text" value="{{ Session::get('email') }}"class="form-control" id="email" name="email" 
+                    <input type="text" value="email" class="form-control" id="email" name="email" 
                         placeholder="Email@student.telkomuniversity.ac.id" required>
                 </div>
             </div>
@@ -70,7 +70,7 @@
     </div>
     </form>
     <br>
-    <p>Already have an account? <a href="/sesi/Index.blade.php">Log In</a></p>
+    <p>Already have an account? <a href="/sesi">Log In</a></p>
     </br>
     <script>
         function validate() {
@@ -105,7 +105,7 @@
                 return false;
             }
 
-            if (email !=  + "@student.telkomuniversity.ac.id") {
+            if (email != "" + "@student.telkomuniversity.ac.id") {
                 alert("Email does not match with Username or invalid email address ");
                 return false;
             }

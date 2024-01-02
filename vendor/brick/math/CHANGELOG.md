@@ -199,6 +199,7 @@ Thanks @manowark 👍
 
 **New exception**
 
+
 `NegativeNumberException` is thrown when calling `sqrt()` on a negative number.
 
 ## [0.8.2](https://github.com/brick/math/releases/tag/0.8.2) - 2018-11-08
