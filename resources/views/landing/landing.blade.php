@@ -127,6 +127,22 @@
       </div>
     </div>
 
+    <div class="container-fluid">
+      <div class="content2-container">
+        <div class="content2">
+          <div>
+            <h3>Feedback from Users</h3>
+              <ul>
+              @foreach($feedbacks as $feedback)
+              <li>{{ $feedback->content }}</li>
+              @endforeach
+              </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+
 
     <div class="footer-content">
 

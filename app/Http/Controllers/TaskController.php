@@ -4,13 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Models\Tasks;
 use App\Models\ShowDashboard;
+use App\Models\Feedback;
 use Illuminate\Http\Request;
 
 class TaskController extends Controller
 {
     public function landing()
     {
-        return view('landing.landing');
+        $feedbacks = Feedback::all();
+        return view('landing.landing', compact('feedbacks'));
     }
     
     public function index(){
