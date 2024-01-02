@@ -35,7 +35,7 @@
                         </a>
                         <ul id="posts" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                             <li class="sidebar-item">
-                                <a href="#" class="sidebar-link">Schedule</a>
+                                <a href="/dashboard" class="sidebar-link">Schedule</a>
                             </li>
                             <li class="sidebar-item">
                                 <a href="/calendar" class="sidebar-link">Calender</a>
@@ -86,35 +86,58 @@
                     <div class="mb-3">
                         <h4>Welcome, Arsaq</h4>
                     </div>
+                    @php
+                        $noTasksMessage = ($tasks->count() === 0) ? 'Tidak ada jadwal' : 'Hanya ada satu jadwal';
+                    @endphp
                     <div class="row">
-                        <div class="col-12 col-md-6 d-flex">
+                        <div class="col-md-6 d-flex">
                             <div class="card flex-fill border-0 illustration">
-                                <div class="card-body p-0 d-flex flex-fill">
-                                    <div class="row g-0 w-100">
-                                        <div class="col-6">
-                                            <div class="p-3 m-1">
-                                                <h4 class="text-danger">WebPROOOOOOOOOOOOOOOOOoooooooo</h4>
-                                                <p class="mb-0">13:15 - 15:38</p>
+                                @if($tasks->count() > 0)
+                                    <?php $earliestTask = $tasks->sortBy('start_time')->first(); ?>
+                                    <div class="card-body p-0 d-flex flex-fill">
+                                        <div class="row g-0 w-100">
+                                            <div class="col-6">
+                                                <div class="p-3 m-1">
+                                                    <h4 class="text-danger">{{ $earliestTask->name }}</h4>
+                                                    <p class="mb-0">{{ \Carbon\Carbon::parse($earliestTask->start_time)->format('H:i') }} - {{ \Carbon\Carbon::parse($earliestTask->end_time)->format('H:i') }}</p>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                @else
+                                    <div class="card-body p-0 d-flex flex-fill justify-content-center align-items-center">
+                                        <div class="col-12 text-center">
+                                            <p class="fw-bold">{{ $noTasksMessage }}</p>
+                                        </div>
+                                    </div>
+                                @endif
                             </div>
                         </div>
-                        <div class="col-12 col-md-6 d-flex">
+                        <div class="col-md-6 d-flex">
                             <div class="card flex-fill border-0">
-                                <div class="card-body p-0 d-flex flex-fill">
-                                    <div class="row g-0 w-100">
-                                        <div class="col-6">
-                                            <div class="p-3 m-1">
-                                                <h4>AI</h4>
-                                                <p class="mb-0">18:44 - 19:44</p>
+                                @if($tasks->count() > 1)
+                                    <?php
+                                        $earliestTask = $tasks->sortBy('start_time')->first();
+                                        $secondEarliestTask = $tasks->sortBy('start_time')->skip(1)->first();
+                                    ?>
+                                    <div class="card-body p-0 d-flex flex-fill">
+                                        <div class="row g-0 w-100">
+                                            <div class="col-6">
+                                                <div class="p-3 m-1">
+                                                    <h4>{{ $secondEarliestTask->name }}</h4>
+                                                    <p class="mb-0">{{ \Carbon\Carbon::parse($secondEarliestTask->start_time)->format('H:i') }} - {{ \Carbon\Carbon::parse($secondEarliestTask->end_time)->format('H:i') }}</p>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                @else
+                                    <div class="card-body p-0 d-flex flex-fill justify-content-center align-items-center">
+                                        <div class="col-12 text-center">
+                                            <p class="fw-bold">{{ $noTasksMessage }}</p>
+                                        </div>
+                                    </div>
+                                @endif
                             </div>
-                        </div>
                         </div>
                     </div>
                     <!-- Table -->
@@ -123,9 +146,16 @@
                             <h5 class="card-title">
                                 Today Schedule
                             </h5>
-                            <h6 class="card-subtitle text-mute">
-                                December, 10
-                            </h6>
+                            @if($tasks->count() > 0)
+                                <?php $earliestTaskDate = date('F, d', strtotime($earliestTask->start_time)); ?>
+                                <h6 class="card-subtitle text-muted">
+                                    {{ $earliestTaskDate }}
+                                </h6>
+                            @else
+                                <h6 class="card-subtitle text-muted">
+                                    No tasks for today
+                                </h6>
+                            @endif
                         </div>
                         <div class="card-body">
                             <table class="table">
@@ -143,18 +173,18 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>   
-                                                    @foreach($tasks as $t)
+                                                    @foreach($tasks->sortBy('start_time') as $t)
                                                         <tr>
                                                             <td>{{ $t->name }}</td>
                                                             <td>{{ $t->start_time }}</td>
                                                             <td>{{ $t->end_time }}</td>
-                                                            <td><a href="/edit-{{$t->id}}" class="btn btn-primary">edit</a></td>
+                                                            <td><a href="/edit-{{ $t->id }}" class="btn btn-primary">edit</a></td>
                                                             <td>
-                                                            <form action="/dashboard/{{$t->id}}" method="POST">
-                                                                @csrf
-                                                                @method('delete')
-                                                                <input type="submit" class="btn btn-danger delete-btn" value="delete" id="delete{{$t->id}}">
-                                                            </form>
+                                                                <form action="/dashboard/{{ $t->id }}" method="POST">
+                                                                    @csrf
+                                                                    @method('delete')
+                                                                    <input type="submit" class="btn btn-danger delete-btn" value="delete" id="delete{{ $t->id }}">
+                                                                </form>
                                                             </td>
                                                         </tr>
                                                     @endforeach
@@ -211,24 +241,5 @@
             });
         });
     </script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
-<script>
-    $(document).ready(function() {
-        $('#tasksTable').DataTable({
-            "processing": true,
-            "serverSide": true,
-            "ajax": {
-                "url": "/tasks-json",
-                "dataSrc": "data"
-            },
-            "columns": [
-                { "data": "name" },
-                { "data": "start_time" },
-                { "data": "end_time" }
-            ]
-        });
-    });
-</script>
 </body>
 </html>
