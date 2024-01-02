@@ -98,8 +98,9 @@
                                         <div class="row g-0 w-100">
                                             <div class="col-6">
                                                 <div class="p-3 m-1">
+                                                    <p class="mb-0">{{ \Carbon\Carbon::parse($earliestTask->start_time)->format('Y-m-d') }}</p>
                                                     <h4 class="text-danger">{{ $earliestTask->name }}</h4>
-                                                    <p class="mb-0">{{ \Carbon\Carbon::parse($earliestTask->start_time)->format('H:i') }} - {{ \Carbon\Carbon::parse($earliestTask->end_time)->format('H:i') }}</p>
+                                                    <p class="mb-0 fw-bold">{{ \Carbon\Carbon::parse($earliestTask->start_time)->format('H:i') }} - {{ \Carbon\Carbon::parse($earliestTask->end_time)->format('H:i') }}</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -123,8 +124,9 @@
                                         <div class="row g-0 w-100">
                                             <div class="col-6">
                                                 <div class="p-3 m-1">
+                                                    <p class="mb-0">{{ \Carbon\Carbon::parse($secondEarliestTask->start_time)->format('Y-m-d') }}</p>
                                                     <h4>{{ $secondEarliestTask->name }}</h4>
-                                                    <p class="mb-0">{{ \Carbon\Carbon::parse($secondEarliestTask->start_time)->format('H:i') }} - {{ \Carbon\Carbon::parse($secondEarliestTask->end_time)->format('H:i') }}</p>
+                                                    <p class="mb-0 fw-bold">{{ \Carbon\Carbon::parse($secondEarliestTask->start_time)->format('H:i') }} - {{ \Carbon\Carbon::parse($secondEarliestTask->end_time)->format('H:i') }}</p>
                                                 </div>
                                             </div>
                                         </div>
