@@ -17,22 +17,21 @@ class loginController extends Controller
     {
         Session::flash('email', $request->email);
        $request->validate([
-            'email'=>'required',
-            'password'=>'required'
+            'email' =>'required',
+            'password' => 'required'
        ],[
             'email.required'=>'Email wajib diisi',
             'password.required'=>'Password wajib diisi'
        ]);
 
        $infologin = [
-            'email'=> $request->email,
-            'password'=> $request->password,
+            'email' => ($request->email),
+            'password'=>($request->password)
        ];
 
        if(Auth::attempt($infologin)){
-            return redirect('dashboard')->with('success','Berhasil Login');
+            return redirect('dashboard')->with('succes', 'login berhasil');
        }else{
-            // return 'gagal';
             return redirect('sesi')->withErrors('email dan password yang dimasukkan tidak valid');
        }
     }
