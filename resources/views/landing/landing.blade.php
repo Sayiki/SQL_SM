@@ -122,48 +122,46 @@
           <br>Ayo bergabung dengan Sahabat Mahasiswa sekarang!
 
           <br>
-          <a href="/register/register">Sign Up</a>
+          <a href="/register/register" class="btn btn-primary">Sign Up</a>
         </h2>
 
       </div>
     </div>
 
     <div class="container-fluid">
-    <div class="content2-container">
-        <div class="content2">
-            <h3>Feedback from Users</h3>
+        <div class="content2-container">
+            <div class="content2">
+                <h3>Feedback from Users</h3>
 
-            <div class="container-fluid">
-              <div class="row justify-content-start">
-                  @foreach($feedbacks as $key => $feedback)
-                      @if($key < 3)
-                          <div class="col-md-4 mb-4 @if($feedbacks->currentPage() > 1 && $key == 0) offset-md-0 @endif">
-                              <div class="card bg-dark text-white">
-                                  <div class="card-body">
-                                      @if($feedback->file_path)
-                                          <img src="{{ asset('storage/' . $feedback->file_path) }}" alt="Feedback Image">
-                                      @endif
-                                      <p class="card-text">{{ $feedback->content }}</p>
-                                  </div>
-                              </div>
-                          </div>
-                      @endif
-                  @endforeach
-              </div>
+                <div class="row justify-content-start">
+                    @foreach($feedbacks as $key => $feedback)
+                        @if($key < 3)
+                            <div class="col-md-4 mb-4 @if($feedbacks->currentPage() > 1 && $key == 0) offset-md-0 @endif">
+                                <div class="card bg-dark text-white">
+                                    @if($feedback->file_path)
+                                        <img src="{{ asset('storage/feedback_files/' . $feedback->file_path) }}" class="card-img-top" alt="Feedback File">
+                                    @endif
+                                    <div class="card-body">
+                                        <p class="card-text">{{ $feedback->content }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        @endif
+                    @endforeach
+                </div>
 
-            <div class="d-flex justify-content-between">
-                @if($feedbacks->currentPage() > 1)
-                    <a href="{{ $feedbacks->previousPageUrl() }}" class="btn btn-primary">Previous</a>
-                @endif
+                <div class="d-flex justify-content-between">
+                    @if($feedbacks->currentPage() > 1)
+                        <a href="{{ $feedbacks->previousPageUrl() }}" class="btn btn-primary">Previous</a>
+                    @endif
 
-                @if($feedbacks->hasMorePages())
-                    <a href="{{ $feedbacks->nextPageUrl() }}" class="btn btn-primary">Next</a>
-                @endif
+                    @if($feedbacks->hasMorePages())
+                        <a href="{{ $feedbacks->nextPageUrl() }}" class="btn btn-primary">Next</a>
+                    @endif
+                </div>
             </div>
-          </div>
         </div>
     </div>
-</div>
 
 
 

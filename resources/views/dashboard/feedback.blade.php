@@ -125,7 +125,7 @@
                                                                 <td>
                                                                     <p>{{ $feedback->content }}</p>
                                                                     @if($feedback->file_path)
-                                                                        <img src="{{ asset('storage/feedback_files/' . $feedback->file_path) }}" alt="Feedback File">
+                                                                    <img src="{{ asset('storage/feedback_files/' . $feedback->file_path) }}" alt="Feedback File">
                                                                     @endif
                                                                 </td>
                                                             </tr>
