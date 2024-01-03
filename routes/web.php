@@ -24,13 +24,15 @@ Route::get('/', [TaskController::class, 'landing']);
 Route::get('/register/register', [RegisterController::class, 'register']);
 Route::post('/register/register/register', [RegisterController::class, 'create']);
 
-Route::get('/sesi', [loginController::class, 'login']);
+Route::get('/sesi', [loginController::class, 'login'])->name('/sesi');
+// Route::get('/sesi', [loginController::class, 'login']);
 Route::post('/sesi/logins', [loginController::class, 'logins']);
 Route::get('/sesi/logout', [loginController::class, 'logout']);
 
 Route::get('/AddSchedule', [TaskController::class, 'create']);
 Route::resource('tasks', 'App\Http\Controllers\TaskController');
-Route::get('/dashboard', [TaskController::class, 'index']);
+Route::get('/dashboard', [TaskController::class, 'index'])->middleware('auth');
+// Route::get('/dashboard', [TaskController::class, 'index']);
 Route::post('/dashboard/store', [TaskController::class, 'store']);
 Route::get('/edit-{id}', [TaskController::class, 'edit']);
 Route::put('/dashboard/{id}', [TaskController::class, 'update']);
