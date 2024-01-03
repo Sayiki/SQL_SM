@@ -12,7 +12,36 @@
     background-size: cover;
     background-position: center;
   }
-  
+
+  .dropdown {
+    text-decoration: none;
+    display: flex;
+    position: relative;
+    right: 30%; 
+    align-items: center;
+    z-index: 3;
+}
+
+.dropdown-toggle {
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.dropdown-menu {
+  background-color: #1C1D22;
+}
+
+.dropdown-item {
+  color: #fff;
+  text-decoration: none;
+  border-bottom: 1px solid #fff; /* Garis bawah */
+}
+
+.dropdown-item:hover {
+  background-color: #34353A;
+}
+
   .navbar {
     width: 100%;
     margin-top: 20px;

@@ -11,70 +11,79 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 
-<body>
+<body data-bs-spy="scroll" data-bs-target="#navbarNav" data-bs-offset="0">
   <div class="navbar">
     <img src="assets/image/Logo_Panjang.png" class="img-fluid" width="15%">
-    <ul>
-      <li><a href="/sesi">Login</a></li>
-      <li><a href="/register/register">Sign Up</a></li>
-    </ul>
+      <div class="dropdown">
+        <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown">Sections</a>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="#carousel">Carousel</a>
+          <a class="dropdown-item" href="#introducing">We are introducing</a>
+          <a class="dropdown-item" href="#feedback">Feedback</a>
+        </div>
+      </div>
+
+      <ul>
+          <li><a href="/sesi">Login</a></li>
+          <li><a href="/register/register">Sign Up</a></li>
+      </ul>
   </div>
 
-
-
-  <div id="carouselExampleDark" class="carousel carousel-dark slide" class="carousel">
-    <div class="carousel-indicators">
-      <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-      <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
-      <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    <div id="carousel">
+      <div id="carouselExampleDark" class="carousel carousel-dark slide" class="carousel">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+      <div class="carousel-inner">
+        <div class="carousel-item active" data-bs-interval="10000">
+          <img src="assets/image/Carousel1.png" class="d-block w-100" >
+          <div class="carousel-caption d-none d-md-block">
+            <h5 id="carousel_text">First slide label</h5>
+            <p id="carousel_text">Some representative placeholder content for the first slide.</p>
+          </div>
+        </div>
+        <div class="carousel-item" data-bs-interval="2000">
+          <img src="assets/image/Carousel2.png" class="d-block w-100" >
+          <div class="carousel-caption d-none d-md-block">
+            <h5 id="carousel_text">Second slide label</h5>
+            <p id="carousel_text">Some representative placeholder content for the second slide.</p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="assets/image/Carousel3.png" class="d-block w-100" >
+          <div class="carousel-caption d-none d-md-block">
+            <h5 id="carousel_text">Third slide label</h5>
+            <p id="carousel_text">Some representative placeholder content for the third slide.</p>
+          </div>
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
     </div>
-    <div class="carousel-inner">
-      <div class="carousel-item active" data-bs-interval="10000">
-        <img src="assets/image/Carousel1.png" class="d-block w-100" >
-        <div class="carousel-caption d-none d-md-block">
-          <h5 id="carousel_text">First slide label</h5>
-          <p id="carousel_text">Some representative placeholder content for the first slide.</p>
-        </div>
+    <div>
+      <h2 class="text-center">Welcome to Our Website</h2>
+        <p class="text-center">
+          Kami dengan bangga mempersembahkan layanan terbaru kami 
+          <br>yang akan merubah cara Anda mengelola jadwal kehidupan kuliah. 
+          <br>Sahabat Mahasiswa hadir sebagai teman setia untuk mendukung kesuksesan akademis dan keseimbangan hidup Anda di dunia perkuliahan.
+        </p>
       </div>
-      <div class="carousel-item" data-bs-interval="2000">
-        <img src="assets/image/Carousel2.png" class="d-block w-100" >
-        <div class="carousel-caption d-none d-md-block">
-          <h5 id="carousel_text">Second slide label</h5>
-          <p id="carousel_text">Some representative placeholder content for the second slide.</p>
-        </div>
-      </div>
-      <div class="carousel-item">
-        <img src="assets/image/Carousel3.png" class="d-block w-100" >
-        <div class="carousel-caption d-none d-md-block">
-          <h5 id="carousel_text">Third slide label</h5>
-          <p id="carousel_text">Some representative placeholder content for the third slide.</p>
-        </div>
-      </div>
+  </div>
+
+  <div id="introducing">
+    <div class="container-fluid" id="text-fitur">
+      <h2 class="text-center">We are introducing</h2>
     </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
-  </div>
 
-  <div>
-    <h2 class="text-center">Welcome to Our Website</h2>
-    <p class="text-center">
-      Kami dengan bangga mempersembahkan layanan terbaru kami 
-      <br>yang akan merubah cara Anda mengelola jadwal kehidupan kuliah. 
-      <br>Sahabat Mahasiswa hadir sebagai teman setia untuk mendukung kesuksesan akademis dan keseimbangan hidup Anda di dunia perkuliahan.
-    </p>
-  </div>
-
-  <div class="container-fluid" id="text-fitur">
-    <h2 class="text-center">We are introducing</h2>
-  </div>
-
-  <div class="container-fluid">
+    <div class="container-fluid">
     <div class="row row-cols-1 row-cols-md-3 g-4" id="card">
       <div class="col">
         <div class="card h-100 bg-transparent">
@@ -107,7 +116,6 @@
       </div>
     </div>
   </div>
-
   <div class="container-fluid">
     <div class="content2-container">
       <div class="content2">
@@ -124,10 +132,10 @@
           <br>
           <a href="/register/register" class="btn btn-primary">Sign Up</a>
         </h2>
-
-      </div>
     </div>
+  </div>
 
+    <div id="feedback">
     <div class="container-fluid">
         <div class="content2-container">
             <div class="content2">
@@ -162,14 +170,7 @@
             </div>
         </div>
     </div>
-
-
-
-
-
-
-    
-
+    </div>
 
     <div class="footer-content">
 
@@ -226,7 +227,10 @@
         <p>Design and Developed by: Sirama-rama Dev</p>
       </div>
     </div>
-    
-</body>
-
+    <script>
+      var scrollSpy = new bootstrap.ScrollSpy(document.body, {
+          target: '#navbarNav'
+      });
+    </script>
+  </body>
 </html>
